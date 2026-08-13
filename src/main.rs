@@ -1,6 +1,6 @@
 use std::{env, error::Error, fs, process};
 
-use rust_trace_perfetto::{Trace, print_generated_perfetto_traces};
+use rust_trace_perfetto::{TraceEvent, print_generated_perfetto_traces};
 
 fn main() {
     println!("Hello, world!");
@@ -44,7 +44,22 @@ impl Config {
     }
 }
 
-pub fn parse_raw_file(content: &str) -> Vec<Trace> {
-    //TODO: implement
-    Vec::new()
+pub fn parse_raw_file(content: &str) -> Vec<TraceEvent> {
+    let mut traces: Vec<TraceEvent> = Vec::new();
+    let mut counter_missed = 0;
+
+    for line in content.lines() {
+        let trace_event = TraceEvent::parse_line(line);
+
+        match trace_event {
+            Some(evt) => traces.push(evt),
+            None => counter_missed += 1,
+        }
+    }
+
+    if counter_missed > 0 {
+        println!("Warning, #{} parsing errors", counter_missed);
+    }
+
+    traces
 }
