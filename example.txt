@@ -1,0 +1,2 @@
+200.594184183 30 0 enter func0 modulename:functionname , param1 pjlsfjfjf, para2 jslakfjls
+300.594184183 30 0 exit func0 modulename:functionname , return code 4
