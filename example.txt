@@ -1,2 +1,13 @@
-200.594184183 30 0 enter func0 modulename:functionname , param1 pjlsfjfjf, para2 jslakfjls
-300.594184183 30 0 exit func0 modulename:functionname , return code 4
+200.594185500 30 0 enter func0 network:wifi_init , param ssid=home_net
+200.594190000 31 1 enter func0 sensor:read_temp , param channel=2
+200.594192000 31 1 enter func0 i2c:transfer , param addr=0x40, len=2
+200.594205000 31 1 exit func0 i2c:transfer , return code 0
+200.594210000 30 0 exit func0 network:wifi_init , return code 0
+200.594212000 30 0 enter func0 network:connect , param timeout=5000
+200.594215000 32 1 enter func0 os:task_yield , param prev=31, next=32
+200.594220000 32 1 exit func0 os:task_yield , return code 0
+200.594225000 31 1 exit func0 sensor:read_temp , return code 24
+200.595000000 30 0 exit func0 network:connect , return code -1
+200.595050000 30 0 enter func0 ui:display_error , param msg=no_wifi
+200.595100000 30 0 exit func0 ui:display_error , return code 0
+200.596000000 30 0 exit func0 main:app_start , return code 1
